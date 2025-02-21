@@ -8,11 +8,12 @@ function applyCustomSort() {
     compareFunction = (a, b) => (String(a) > String(b) ? 1 : -1),
   ) {
     for (let key = 0; key < this.length; key++) {
-      for (let i = key; i < this.length; i++) {
+      for (let i = key + 1; i < this.length; i++) {
+        const firstIndex = this[key];
         const secondIndex = this[i];
 
-        if (compareFunction(this[key], secondIndex) > 0) {
-          this[i] = this[key];
+        if (compareFunction(firstIndex, secondIndex) > 0) {
+          this[i] = firstIndex;
           this[key] = secondIndex;
         }
       }
